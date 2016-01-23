@@ -11,15 +11,11 @@ var fs      = require('fs');
 
 var settings;
 
-if (fs.existsSync('./config.json')) {
-    settings = ( require('./config.json') );
-} else {
-    settings = require('./config.sample.json');
-}
+settings = require('./config.json');
 
 app.use(express.static(__dirname + '/../public'));
 
-pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?api_key=' + settings.apiKey + '&branch='+settings.branch;
+pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?access_token=' + settings.apiKey + '&branch='+settings.branch;
 
 processXMLResponse = function(xml) {
   var doc = jsdom(xml);
@@ -56,10 +52,10 @@ applyWhitelist = function(projects, whitelistedProjects) {
   whiteListedProjectsWithBranch = []
 
   for(project in whitelistedProjects){
-    whiteListedProjectsWithBranch.push(whitelistedProjects[project] + '-' + settings.branch)
+    whiteListedProjectsWithBranch.push(whitelistedProjects[project] + ' (' + settings.branch + ')')
   }
   for(var i = 0; i < projects.length; i++) {
-    if( whiteListedProjectsWithBranch.indexOf( utils.dasherize(projects[i].getAttribute('name')) ) >= 0 ) {
+    if( whiteListedProjectsWithBranch.indexOf( projects[i].getAttribute('name') ) >= 0 ) {
       newProjects.push( projects[i] );
     }
   }

@@ -49,5 +49,3 @@ var buildkite = {
   }
 
 }
-
-exports.buildkite = buildkite;
