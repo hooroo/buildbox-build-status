@@ -15,7 +15,7 @@ settings = require('./config.json');
 
 app.use(express.static(__dirname + '/../public'));
 
-pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?access_token=' + settings.apiKey + '&branch='+settings.branch;
+pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?access_token=' + settings.apiKey;
 
 processXMLResponse = function(xml) {
   var doc = jsdom(xml);
@@ -52,7 +52,7 @@ applyWhitelist = function(projects, whitelistedProjects) {
   whiteListedProjectsWithBranch = []
 
   for(project in whitelistedProjects){
-    whiteListedProjectsWithBranch.push(whitelistedProjects[project] + ' (' + settings.branch + ')')
+    whiteListedProjectsWithBranch.push(whitelistedProjects[project])
   }
   for(var i = 0; i < projects.length; i++) {
     if( whiteListedProjectsWithBranch.indexOf( projects[i].getAttribute('name') ) >= 0 ) {
