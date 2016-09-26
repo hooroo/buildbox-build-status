@@ -1,5 +1,5 @@
 app:
-  image: docker-registry.in.jqdev.net/buildkite-build-status:213
+  image: 730011650125.dkr.ecr.ap-southeast-2.amazonaws.com/buildkite-build-status:stable
   environment:
     BUILD_FARM_RUN:
     # Environments from caller
