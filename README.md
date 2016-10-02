@@ -10,14 +10,16 @@ So that's pretty much the idea. The monitor stretches to the entirety of the scr
 
 The thing works using node.js, so make sure you have that sucker installed. Then, just clone the repo (or download the files), perform the obligatory `npm install` and configure as desired, by duplicating `app/config.sample.json` to `config.json` and filling it out with suitable values.
 
+You will need a Build Kite API Access Token with the `read_builds` permission.
+
 ## Running
 
-The monitor works with a whitelist approach, whereby you configure the `whitelist` value in `config.json` with the projects that you want to track, i.e.,
+The monitor works with a whitelist approach, whereby you configure the `whitelist` value in `config.json` with the project names that you want to track, i.e.,
 
 ```json
-"whitelist": ["a-project", "another-project", "yet-another-project"]
+"whitelist": ["A Project", "Another project", "Yet Another Project"]
 ```
-You can start the server by running `grunt` or simply `node app/app.js` and access it on your localhost on port 5005 `http://localhost:5005`.
+You can start the server by running `grunt sass` then `grunt express` and access it on your localhost on port 5005 `http://localhost:5005`.
 
 ## Other config values
 
