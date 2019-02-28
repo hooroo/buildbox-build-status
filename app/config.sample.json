@@ -1,6 +1,6 @@
 {
   "project": "<project_name>",
-  "apiKey": "<api_key>",
+  "accessToken": "<access_token>",
   "pollInterval": 60000,
   "daysInactive": 5,
   "maxDisplay": 12,
