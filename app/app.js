@@ -11,6 +11,8 @@ var fs      = require('fs');
 
 var settings = ( require('./config.json') );
 
+const port = 5001;
+
 app.use(express.static(__dirname + '/../public'));
 
 pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?access_token=' + settings.accessToken + '&branch='+settings.branch;
@@ -99,4 +101,6 @@ io.on('connection', function (socket) {
   }, settings.pollInterval);
 });
 
-server.listen(5005);
+server.listen(port, () => {
+  console.log(`Server started on http://localhost:${port}`);
+});
