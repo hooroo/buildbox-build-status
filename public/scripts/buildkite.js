@@ -50,4 +50,4 @@ var buildkite = {
 
 }
 
-exports.buildkite = buildkite;
+window.buildkite = buildkite;
