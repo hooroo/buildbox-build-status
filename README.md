@@ -10,6 +10,8 @@ So that's pretty much the idea. The monitor stretches to the entirety of the scr
 
 The thing works using node.js, so make sure you have that sucker installed. Then, just clone the repo (or download the files), perform the obligatory `npm install` and configure as desired, by duplicating `app/config.sample.json` to `config.json` and filling it out with suitable values.
 
+To run Grunt you will need to install the `grunt-cli`, you can install this by running `npm install -g  grunt-cli`
+
 ## Running
 
 The monitor works with a whitelist approach, whereby you configure the `whitelist` value in `config.json` with the projects that you want to track, i.e.,
