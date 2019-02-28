@@ -2,12 +2,12 @@
   "name": "buildkite-build-status",
   "version": "0.0.0",
   "dependencies": {
-    "express":   "~4.0.0",
-    "request":   "~2.36.0",
+    "express": "~4.0.0",
+    "request": "~2.36.0",
     "socket.io": "~1.0.0",
-    "jsdom-nogyp":    "~0.8.3",
+    "jsdom-nogyp": "~0.8.3",
     "moment": "~2.8.3",
-    "node-sass": "~1.0.1"
+    "node-sass": "~4.11.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -17,8 +17,5 @@
     "grunt-parallel": "",
     "load-grunt-tasks": "",
     "jasmine-node": "~1.14.5"
-  },
-  "engines": {
-    "node": ">=0.8.0"
   }
 }
