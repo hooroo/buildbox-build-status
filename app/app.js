@@ -1,15 +1,15 @@
-var request = require('request');
-var express = require('express');
+const request = require('request');
+const express = require('express');
 
-var app     = express();
-var server  = require('http').Server(app);
-var io      = require('socket.io')(server);
-var jsdom   = require("jsdom-nogyp").jsdom;
-var utils   = require("./utils");
-var sass    = require("node-sass");
-var fs      = require('fs');
+const app     = express();
+const server  = require('http').Server(app);
+const io      = require('socket.io')(server);
+const jsdom   = require("jsdom-nogyp").jsdom;
+const utils   = require("./utils");
+const sass    = require("node-sass");
+const fs      = require('fs');
 
-var settings = ( require('./config.json') );
+const settings = ( require('./config.json') );
 
 const port = 5001;
 
@@ -18,19 +18,19 @@ app.use(express.static(__dirname + '/../public'));
 pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?access_token=' + settings.accessToken + '&branch='+settings.branch;
 
 processXMLResponse = function(xml) {
-  var doc = jsdom(xml);
-  var projects = doc.getElementsByTagName('Project');
-  var whitelisted = settings.whitelist;
+  const doc = jsdom(xml);
+  let projects = doc.getElementsByTagName('Project');
+  const whitelisted = settings.whitelist;
   projects = Boolean(whitelisted.length) ? applyWhitelist(projects, whitelisted) : projects;
 
-  var statuses = [];
+  const statuses = [];
 
-  for(var i = 0; i < projects.length; i++) {
-    var project = projects[i];
-    var projectName           = project.getAttribute('name');
-    var projectActivity       = project.getAttribute('activity').toLowerCase();
-    var projectPriorStatus    = getPriorStatus(project);
-    var projectCurrentStatus  = getCurrentStatus(projectPriorStatus, projectActivity);
+  for(const i = 0; i < projects.length; i++) {
+    const project = projects[i];
+    const projectName           = project.getAttribute('name');
+    const projectActivity       = project.getAttribute('activity').toLowerCase();
+    const projectPriorStatus    = getPriorStatus(project);
+    const projectCurrentStatus  = getCurrentStatus(projectPriorStatus, projectActivity);
 
     status = {
       name:                 utils.humanize(projectName),
@@ -63,7 +63,7 @@ applyWhitelist = function(projects, whitelistedProjects) {
 }
 
 getBuildNumber = function(project) {
-  var buildLabel = project.getAttribute('lastbuildlabel');
+  const buildLabel = project.getAttribute('lastbuildlabel');
   if(buildLabel == undefined)
     buildLabel = "";
   else
