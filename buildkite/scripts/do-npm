@@ -1,8 +1,0 @@
-#!/bin/bash
-set -e
-set -x
-
-ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
-
-npm install
-exec "$@"
