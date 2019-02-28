@@ -53,5 +53,3 @@ var buildkite = {
   }
 
 }
-
-module.exports = buildkite
