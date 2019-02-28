@@ -1,6 +1,6 @@
 {
   "project": "<project_name>",
-  "apiKey": "<api_key>",
+  "accessToken": "<access_token>",
   "pollInterval": 10000,
   "whitelist": ["<projects_to_whitelist>"],
   "branch": "master"

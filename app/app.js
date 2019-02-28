@@ -9,23 +9,17 @@ var utils   = require("./utils");
 var sass    = require("node-sass");
 var fs      = require('fs');
 
-var settings;
-
-if (fs.existsSync('./config.json')) {
-    settings = ( require('./config.json') );
-} else {
-    settings = require('./config.sample.json');
-}
+var settings = ( require('./config.json') );
 
 app.use(express.static(__dirname + '/../public'));
 
-pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?api_key=' + settings.apiKey + '&branch='+settings.branch;
+pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?access_token=' + settings.accessToken + '&branch='+settings.branch;
 
 processXMLResponse = function(xml) {
   var doc = jsdom(xml);
   var projects = doc.getElementsByTagName('Project');
   var whitelisted = settings.whitelist;
-  projects = applyWhitelist(projects, whitelisted);
+  projects = Boolean(whitelisted.length) ? applyWhitelist(projects, whitelisted) : projects;
 
   var statuses = [];
 

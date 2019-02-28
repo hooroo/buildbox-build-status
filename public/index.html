@@ -35,7 +35,7 @@
 
   <script type="text/javascript">
     io.connect().on('build_status', function (projects) {
-      buildkite.process(projects);
+      window.buildkite.process(projects);
     });
   </script>
 
