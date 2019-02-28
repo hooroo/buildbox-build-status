@@ -14,9 +14,11 @@ var settings;
 
 settings = ( require('./config.json') );
 
+const port = 5005;
+
 app.use(express.static(__dirname + '/../public'));
 
-pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?api_key=' + settings.apiKey + '&branch='+settings.branch;
+pollUrl = 'https://cc.buildkite.com/' + settings.project + '.xml?access_token=' + settings.accessToken + '&branch='+settings.branch;
 
 processXMLResponse = function(xml) {
   var doc = jsdom(xml);
@@ -89,7 +91,7 @@ activeProjects = function(projects) {
       break;
     }
   }
-  
+
   for(var i = 0; i < projectsOther.length; i++) {
     if (projectsWithActivity.length < settings.maxDisplay) {
       projectsWithActivity.push(projectsOther[i]);
@@ -138,4 +140,6 @@ io.on('connection', function (socket) {
   }, settings.pollInterval);
 });
 
-server.listen(5005);
+server.listen(port, () => {
+  console.log(`Server started on http://localhost:${port}`);
+});
