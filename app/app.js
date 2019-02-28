@@ -6,8 +6,6 @@ const server  = require('http').Server(app);
 const io      = require('socket.io')(server);
 const jsdom   = require("jsdom-nogyp").jsdom;
 const utils   = require("./utils");
-const sass    = require("node-sass");
-const fs      = require('fs');
 
 const settings = ( require('./config.json') );
 
@@ -25,7 +23,7 @@ processXMLResponse = function(xml) {
 
   const statuses = [];
 
-  for(const i = 0; i < projects.length; i++) {
+  for(var i = 0; i < projects.length; i++) {
     const project = projects[i];
     const projectName           = project.getAttribute('name');
     const projectActivity       = project.getAttribute('activity').toLowerCase();
@@ -63,7 +61,7 @@ applyWhitelist = function(projects, whitelistedProjects) {
 }
 
 getBuildNumber = function(project) {
-  const buildLabel = project.getAttribute('lastbuildlabel');
+  let buildLabel = project.getAttribute('lastbuildlabel');
   if(buildLabel == undefined)
     buildLabel = "";
   else
