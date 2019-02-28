@@ -1,6 +1,9 @@
 {
   "name": "buildkite-build-status",
   "version": "0.0.0",
+  "scripts": {
+    "start": "grunt"
+  },
   "dependencies": {
     "express": "~4.0.0",
     "request": "~2.36.0",

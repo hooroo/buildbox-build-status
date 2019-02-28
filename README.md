@@ -19,7 +19,7 @@ The monitor works with a whitelist approach, whereby you configure the `whitelis
 ```json
 "whitelist": ["a-project", "another-project", "yet-another-project"]
 ```
-You can start the server by running `grunt` or simply `node app/app.js` and access it on your localhost on port 5005 `http://localhost:5005`.
+You can start the server by running `npm run start` and accessing it on `http://localhost:5005`.
 
 ## Other config values
 
